@@ -14,7 +14,9 @@ typedef struct paintingFrame
 
 } paintingFrame;
 
-int paintingFrameStartPaint(paintingFrame ** paintFrame);
-int paintingFrameClearPaint(paintingFrame ** paintFrame);
+int paintingFrameStartPaint(paintingFrame ** instance);
+int paintingFrameClearPaint(paintingFrame ** instance, short int height, short int widht);
+int paintingFramePrintPaint(paintingFrame ** instance);
+int paintingFrameDebugPaint(paintingFrame ** instance);
 
 #endif

@@ -8,9 +8,10 @@ int main() {
     paintingFrame * quadro = NULL;
 
     paintingFrameStartPaint(&quadro);
-    paintingFrameClearPaint(&quadro);
+    paintingFrameClearPaint(&quadro, 3, 4);
 
-    printf("%c", quadro->paintBits[0][0]);
+    paintingFramePrintPaint(&quadro);
+    paintingFrameDebugPaint(&quadro);
     return 0;
     
 }
