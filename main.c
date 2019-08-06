@@ -12,4 +12,5 @@ int main() {
 
     printf("%c", quadro->paintBits[0][0]);
     return 0;
+    
 }

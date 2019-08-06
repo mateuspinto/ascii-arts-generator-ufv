@@ -7,7 +7,7 @@
 
 typedef struct paintingFrame
 {
-    int ** validBits;
+    bool ** validBits;
     char ** paintBits;
     short int height;
     short int widht;
