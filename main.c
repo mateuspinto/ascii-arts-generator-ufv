@@ -5,8 +5,11 @@
 
 int main() {
 
+    paintingFrame * quadro = NULL;
 
+    paintingFrameStartPaint(&quadro);
+    paintingFrameClearPaint(&quadro);
 
-
+    printf("%c", quadro->paintBits[0][0]);
     return 0;
 }
