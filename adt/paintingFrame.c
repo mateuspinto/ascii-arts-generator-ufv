@@ -181,7 +181,7 @@ bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin
 
 bool paintingFrameCheckIfPaintDontFit(paintingFrame ** destiny, paintingFrame ** origin)
 {
-    if (((**destiny).widht >= (**origin).widht) && ((**destiny).height >= (**origin).height))
+    if (((**destiny).widht > (**origin).widht) && ((**destiny).height > (**origin).height))
     {
         return 0;
     }
@@ -211,6 +211,7 @@ bool paintingFrameInsertPaintInRandomPosition(paintingFrame ** destiny, painting
     }
 
     paintingFrameCopyPaint(destiny, origin, height, widht);
+    
 
 
     return 0;

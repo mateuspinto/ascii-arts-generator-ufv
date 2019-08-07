@@ -16,7 +16,7 @@ int main() {
 
     paintingFrameCreatePaintFromFile(&desenho, "paints/test.txt");
 
-    paintingFrameCreateClearPaint(&quadro, 30, 30);
+    paintingFrameCreateClearPaint(&quadro, 3, 3);
     paintingFrameInsertManyCopies(&quadro, &desenho, 5);
     //paintingFrameCopyPaint(&quadro, &desenho, 0, 0);
     paintingFramePrintPaint(&quadro);
