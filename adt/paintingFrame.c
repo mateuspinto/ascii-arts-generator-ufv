@@ -74,12 +74,32 @@ bool paintingFrameCreatePaintFromFile(paintingFrame ** instance, char * filename
 
     unsigned short int fileHeight, fileWidht;
     FILE * file = NULL;
+    char swap;
 
     file = fopen(filename, "r");
 
-    fscanf(file, "%hu %hu", &fileHeight, &fileWidht);
+    fscanf(file, "%hu %hu\n", &fileHeight, &fileWidht);
 
-    paintingFrameClearPaint(instance, fileHeight, fileWidht);
+    paintingFrameCreateClearPaint(instance, fileHeight, fileWidht);
+
+    for (size_t i = 0; i < (**instance).height; i++)
+    {
+        
+        for (size_t j = 0; j < (**instance).widht; j++)
+        {
+            //&((**instance).pixels[i][j])
+            fscanf(file, "%c", &swap);
+
+            if(swap!='.')
+            {
+                ((**instance).pixels[i][j]) = swap;
+                (**instance).paintedPixels = (**instance).paintedPixels + 1;
+            }
+        }
+
+        fscanf(file, "\n");
+        
+    } 
 
     fclose(file);
 

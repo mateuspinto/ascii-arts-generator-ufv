@@ -10,11 +10,11 @@ int main() {
     paintingFrame * quadro = NULL;
 
     /*paintingFrameStartPaint(&quadro);
-    paintingFrameClearPaint(&quadro, 300, 400);
+    paintingFrameClearPaint(&quadro, 300, 400);*/
 
-    printf("%d", paintingFrameOpenPaintFromFile(&quadro, "paints/test.txt"));*/
+    paintingFrameCreatePaintFromFile(&quadro, "paints/test.txt");
 
-    paintingFrameCreateClearPaint(&quadro, 5, 4);
+    //paintingFrameCreateClearPaint(&quadro, 5, 4);
     paintingFramePrintPaint(&quadro);
     return 0;
     
