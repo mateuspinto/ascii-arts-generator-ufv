@@ -8,15 +8,17 @@
 int main() {
 
     paintingFrame * quadro = NULL;
+    paintingFrame * desenho = NULL;
 
     /*paintingFrameStartPaint(&quadro);
     paintingFrameClearPaint(&quadro, 300, 400);*/
 
-    paintingFrameCreatePaintFromFile(&quadro, "paints/test.txt");
+    paintingFrameCreatePaintFromFile(&desenho, "paints/test.txt");
 
-    //paintingFrameCreateClearPaint(&quadro, 5, 4);
+    paintingFrameCreateClearPaint(&quadro, 5, 50);
+    paintingFrameInsertManyCopies(&quadro, &desenho, 20);
     paintingFramePrintPaint(&quadro);
-    printf("%d", (*quadro).paintedPixels);
+    paintingFrameDebug(&desenho);
     return 0;
     
 }

@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include "../auxFunctions.h"
 #include "paintingFrame.h"
+#include <time.h>
 
 bool paintingFrameDestroyPaint(paintingFrame ** instance)
 {
@@ -106,6 +107,13 @@ bool paintingFrameCreatePaintFromFile(paintingFrame ** instance, char * filename
     return 0;
 }
 
+bool paintingFrameDebug(paintingFrame ** instance)
+{
+    printf("Altura: %hu, Largura: %hu\n", (**instance).height, (**instance).widht);
+
+    return 0;
+}
+
 bool paintingFramePrintPaint(paintingFrame ** instance){
 
     auxFunctionsPrintHorizontalLine((**instance).widht);
@@ -152,7 +160,8 @@ bool paintingFrameCopyPaint(paintingFrame ** destiny, paintingFrame ** origin, u
 }
 
 
-bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int height, unsigned short int widht){
+bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int height, unsigned short int widht)
+{
 
     for (size_t i = 0; i < (**origin).height; i++)
     {
@@ -171,4 +180,51 @@ bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin
 
 
     return 0;
+}
+
+bool paintingFrameCheckIfPaintDontFit(paintingFrame ** destiny, paintingFrame ** origin)
+{
+    if (((**destiny).widht >= (**origin).widht) && ((**destiny).height >= (**origin).height))
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+bool paintingFrameInsertPaintInRandomPosition(paintingFrame ** destiny, paintingFrame ** origin)
+{
+    unsigned short int height;
+    unsigned short int widht;
+
+    if (!paintingFrameCheckIfPaintDontFit(origin, destiny))
+    {
+        return 1;
+    }
+
+    srand(time(NULL));
+    
+    height = (rand() % ((**destiny).height + (**origin).height -1) );
+    widht = (rand() % ((**destiny).widht - (**origin).widht -1) );
+
+    while (paintingFrameCheckOverlay(destiny, origin, height, widht)) {
+        height = (rand() % ((**destiny).height + (**origin).height -1) );
+        widht = (rand() % ((**destiny).widht - (**origin).widht -1) );
+    }
+
+    paintingFrameCopyPaint(destiny, origin, height, widht);
+
+
+    return 0;
+}
+
+bool paintingFrameInsertManyCopies(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int copiesNumber)
+{
+    for (size_t i = 0; i < copiesNumber; i++)
+    {
+        paintingFrameInsertPaintInRandomPosition(destiny, origin);
+    }
+
+    return 0;
+    
 }
