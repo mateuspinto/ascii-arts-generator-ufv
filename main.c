@@ -14,14 +14,15 @@ int main() {
     /*paintingFrameStartPaint(&quadro);
     paintingFrameClearPaint(&quadro, 300, 400);*/
 
-    paintingFrameCreatePaintFromFile(&desenho, "paints/test.txt");
+    paintingFrameCreatePaintFromFile(&desenho, "paints/asterisk.txt");
 
-    paintingFrameCreateClearPaint(&quadro, 3, 3);
-    paintingFrameInsertManyCopies(&quadro, &desenho, 5);
+    paintingFrameCreateClearPaint(&quadro, 5, 20);
+    paintingFrameInsertManyCopies(&quadro, &desenho, 4);
     //paintingFrameCopyPaint(&quadro, &desenho, 0, 0);
     paintingFramePrintPaint(&quadro);
     paintingFrameDebug(&desenho);
     paintingFrameDebug(&quadro);
+
     return 0;
     
 }

@@ -202,12 +202,12 @@ bool paintingFrameInsertPaintInRandomPosition(paintingFrame ** destiny, painting
     srand(time(NULL));
     
     height = (rand() % ((**destiny).height - (**origin).height + 1));
-    widht = (rand() % ((**destiny).widht - (**origin).widht + 2));
+    widht = (rand() % ((**destiny).widht - (**origin).widht + 1));
 
     while (paintingFrameCheckOverlay(destiny, origin, height, widht)) 
     {
         height = (rand() % ((**destiny).height - (**origin).height + 1));
-        widht = (rand() % ((**destiny).widht - (**origin).widht + 2));
+        widht = (rand() % ((**destiny).widht - (**origin).widht + 1));
     }
 
     paintingFrameCopyPaint(destiny, origin, height, widht);
