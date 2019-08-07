@@ -1,9 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../auxFunctions.h"
 #include "paintingFrame.h"
 
-int paintingFrameStartPaint(paintingFrame ** instance){
+bool paintingFrameDestroyPaint(paintingFrame ** instance)
+{
+
+    if((*instance) == NULL)
+    {
+        return 0;
+    }
+
+    for (size_t i = 0; i < (**instance).height; i++)
+    {
+        free((**instance).pixels[i]);
+        
+    }
+
+    free((**instance).pixels); 
+
+    free((*instance));
+
+    (*instance) = NULL;
+
+    return 0;
+}
+
+bool paintingFrameStartPaint(paintingFrame ** instance){
     *instance = malloc(sizeof(paintingFrame));
 
      if(*instance==NULL){
@@ -14,24 +38,24 @@ int paintingFrameStartPaint(paintingFrame ** instance){
     return 0;
 }
 
-int paintingFrameClearPaint(paintingFrame ** instance, short int height, short int widht){
+bool paintingFrameClearPaint(paintingFrame ** instance, unsigned short int height, unsigned short int widht)
+{
+    
     (**instance).height = height;
     (**instance).widht = widht;
+    (**instance).paintedPixels = 0;
 
     // Aloca dinamicamente o quadro de pintura
-    (**instance).validBits = malloc((**instance).height * sizeof(bool*));
-    (**instance).paintBits = malloc((**instance).height * sizeof(char*));
+    (**instance).pixels = malloc((**instance).height * sizeof(char*));
 
     for (size_t i = 0; i < (**instance).height; i++)
     {
-        (**instance).validBits[i] = malloc((**instance).widht * sizeof(bool));
-        (**instance).paintBits[i] = malloc((**instance).widht * sizeof(char));
+        (**instance).pixels[i] = malloc((**instance).widht * sizeof(char));
 
-        // Preenchendo quadro de pintura
+        // Limpando quadro de pintura
         for (size_t j = 0; j < (**instance).widht; j++)
         {
-            (**instance).validBits[i][j] = 0;
-            (**instance).paintBits[i][j] = '\0';
+            (**instance).pixels[i][j] = '\0';
         }
         
     } 
@@ -39,31 +63,92 @@ int paintingFrameClearPaint(paintingFrame ** instance, short int height, short i
     return 0;
 }
 
+bool paintingFrameCreateClearPaint(paintingFrame ** instance, unsigned short int height, unsigned short int widht)
+{
+    paintingFrameDestroyPaint(instance);
+    paintingFrameStartPaint(instance);
+    return paintingFrameClearPaint(instance, height, widht);
+}
 
-int paintingFramePrintPaint(paintingFrame ** instance){
-    
-    for (size_t i = 0; i < (**instance).height; i++)
-    {
-        for (size_t j = 0; j < (**instance).widht; j++)
-        {
-            printf("%c", (*instance)->paintBits[i][j]);
-        }
+bool paintingFrameCreatePaintFromFile(paintingFrame ** instance, char * filename){
 
-        printf("\n");
-    }
+    unsigned short int fileHeight, fileWidht;
+    FILE * file = NULL;
+
+    file = fopen(filename, "r");
+
+    fscanf(file, "%hu %hu", &fileHeight, &fileWidht);
+
+    paintingFrameClearPaint(instance, fileHeight, fileWidht);
+
+    fclose(file);
+
     return 0;
 }
 
-int paintingFrameDebugPaint(paintingFrame ** instance){
+bool paintingFramePrintPaint(paintingFrame ** instance){
+
+    auxFunctionsPrintHorizontalLine((**instance).widht);
     
     for (size_t i = 0; i < (**instance).height; i++)
     {
+
+        auxFunctionsPrintVerticalLine();
+
         for (size_t j = 0; j < (**instance).widht; j++)
         {
-            printf("%d", (*instance)->validBits[i][j]);
+            printf("%c", (*instance)->pixels[i][j]);
         }
 
+        auxFunctionsPrintVerticalLine();
         printf("\n");
     }
+
+    auxFunctionsPrintHorizontalLine((**instance).widht);
+
+    return 0;
+}
+
+
+bool paintingFrameCopyPaint(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int height, unsigned short int widht){
+
+    for (size_t i = 0; i < (**origin).height; i++)
+    {
+        for (size_t j = 0; j < (**origin).widht; j++)
+        {
+            // Garante casos de desenho que compartilham poucos pixels, impedindo copias de espacos vazios
+            if ((**origin).pixels[i][j]!='\0')
+            {
+                (**destiny).pixels[height + i][widht + j] = (**origin).pixels[i][j];
+            }
+        
+        }
+        
+    }
+
+    (**destiny).paintedPixels = (**destiny).paintedPixels + (**origin).paintedPixels; 
+
+    return 0;
+}
+
+
+bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int height, unsigned short int widht){
+
+    for (size_t i = 0; i < (**origin).height; i++)
+    {
+
+        for (size_t j = 0; j < (**origin).widht; j++)
+        {
+            // Ocorre sempre que a posição possível do desenho está ocupada
+            if ((**destiny).pixels[height + i][widht + j]!='\0')
+            {
+                return 1;
+            }
+        
+        }
+        
+    } 
+
+
     return 0;
 }

@@ -7,16 +7,20 @@
 
 typedef struct paintingFrame
 {
-    bool ** validBits;
-    char ** paintBits;
-    short int height;
-    short int widht;
+    char ** pixels;
+    unsigned short int height;
+    unsigned short int widht;
+    int paintedPixels;
 
 } paintingFrame;
 
-int paintingFrameStartPaint(paintingFrame ** instance);
-int paintingFrameClearPaint(paintingFrame ** instance, short int height, short int widht);
-int paintingFramePrintPaint(paintingFrame ** instance);
-int paintingFrameDebugPaint(paintingFrame ** instance);
+bool paintingFrameDestroyPaint(paintingFrame ** instance);
+bool paintingFrameStartPaint(paintingFrame ** instance);
+bool paintingFrameClearPaint(paintingFrame ** instance, unsigned short int height, unsigned short int widht);
+bool paintingFrameCreateClearPaint(paintingFrame ** instance, unsigned short int height, unsigned short int widht);
+bool paintingFrameCreatePaintFromFile(paintingFrame ** instance, char * filename);
+bool paintingFramePrintPaint(paintingFrame ** instance);
+bool paintingFrameCopyPaint(paintingFrame ** instanceA, paintingFrame ** instanceB, unsigned short int height, unsigned short int widht);
+bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int height, unsigned short int widht);
 
 #endif

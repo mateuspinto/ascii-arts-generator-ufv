@@ -12,7 +12,7 @@ CCFLAGS=$(WARN)
 
 
 # Main e .c dos TADS
-SRC= main.c adt/paintingFrame.c
+SRC= main.c auxFunctions.c adt/paintingFrame.c
 
 all:
 	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS) -lm
