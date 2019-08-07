@@ -44,7 +44,6 @@ bool paintingFrameClearPaint(paintingFrame ** instance, unsigned short int heigh
     
     (**instance).height = height;
     (**instance).widht = widht;
-    (**instance).paintedPixels = 0;
 
     // Aloca dinamicamente o quadro de pintura
     (**instance).pixels = malloc((**instance).height * sizeof(char*));
@@ -94,7 +93,6 @@ bool paintingFrameCreatePaintFromFile(paintingFrame ** instance, char * filename
             if(swap!='.')
             {
                 ((**instance).pixels[i][j]) = swap;
-                (**instance).paintedPixels = (**instance).paintedPixels + 1;
             }
         }
 
@@ -153,8 +151,6 @@ bool paintingFrameCopyPaint(paintingFrame ** destiny, paintingFrame ** origin, u
         }
         
     }
-
-    (**destiny).paintedPixels = (**destiny).paintedPixels + (**origin).paintedPixels; 
 
     return 0;
 }
