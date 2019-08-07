@@ -16,6 +16,7 @@ int main() {
 
     //paintingFrameCreateClearPaint(&quadro, 5, 4);
     paintingFramePrintPaint(&quadro);
+    printf("%d", (*quadro).paintedPixels);
     return 0;
     
 }

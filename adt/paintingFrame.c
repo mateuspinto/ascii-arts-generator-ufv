@@ -87,7 +87,7 @@ bool paintingFrameCreatePaintFromFile(paintingFrame ** instance, char * filename
         
         for (size_t j = 0; j < (**instance).widht; j++)
         {
-            //&((**instance).pixels[i][j])
+            
             fscanf(file, "%c", &swap);
 
             if(swap!='.')
