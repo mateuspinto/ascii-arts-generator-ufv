@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
+
 #include "../auxFunctions.h"
 #include "paintingFrame.h"
-#include <time.h>
 
 bool paintingFrameDestroyPaint(paintingFrame ** instance)
 {

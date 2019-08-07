@@ -4,13 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 typedef struct paintingFrame
 {
     char ** pixels;
     unsigned short int height;
     unsigned short int widht;
-    int paintedPixels;
 
 } paintingFrame;
 
