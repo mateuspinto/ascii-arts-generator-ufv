@@ -5,7 +5,8 @@
 
 #include "auxFunctions.h"
 
-bool auxFunctionsPrintHorizontalLine(unsigned short int widht){
+bool auxFunctionsPrintHorizontalLine(unsigned short int widht)
+{
 
     for (size_t i = 0; i < widht + 2; i++)
     {
@@ -21,4 +22,31 @@ bool auxFunctionsPrintVerticalLine(){
     printf("|");
 
     return 0;
+}
+
+bool auxFunctionsPrintMenu()
+{
+    auxFunctionsPrintHorizontalLine(80);
+    printf("Bem-vindo ao programa René Marombitte, criador de artes digitais aleatórias!\n");
+    auxFunctionsPrintHorizontalLine(80);
+
+    printf("Digite uma opção válida: \n");
+    printf("1- Asterisco simples;\n");
+    printf("2- Símbolo de soma com astericos;\n");
+    printf("3- Letra X com asteriscos;\n");
+    printf("4- Figura aleatórias (Surpresa)\n");
+    auxFunctionsPrintHorizontalLine(80);
+    printf("\n");
+
+    return 0;
+}
+
+bool auxFunctionsAskForType()
+{
+    return printf("Digite uma opção válida: ");
+}
+
+bool auxFunctionsAskForCopies()
+{
+    return printf("Digite a quantidade de entradas: ");
 }

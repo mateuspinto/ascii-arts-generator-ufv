@@ -26,6 +26,9 @@ bool paintingFrameCheckOverlay(paintingFrame ** destiny, paintingFrame ** origin
 bool paintingFrameCheckIfPaintDontFit(paintingFrame ** destiny, paintingFrame ** origin);
 bool paintingFrameInsertPaintInRandomPosition(paintingFrame ** destiny, paintingFrame ** origin);
 bool paintingFrameInsertManyCopies(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int copiesNumber);
-
+bool paintingFrameInsertCopiesFrom1To100(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int copiesNumber);
+bool paintingFrameRandomlyInsertThreePaints(paintingFrame ** destiny, paintingFrame ** paint0, paintingFrame ** paint1, paintingFrame ** paint2, unsigned short int copiesNumber);
+bool paintingFrameRandomlyInsertThreePaintsFrom1To100(paintingFrame ** destiny, paintingFrame ** paint0, paintingFrame ** paint1, paintingFrame ** paint2, unsigned short int copiesNumber);
+bool paintingFrameBonusAstro(paintingFrame ** destiny, unsigned short int surprise);
 
 #endif

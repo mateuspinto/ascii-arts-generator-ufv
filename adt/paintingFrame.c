@@ -124,7 +124,13 @@ bool paintingFramePrintPaint(paintingFrame ** instance){
 
         for (size_t j = 0; j < (**instance).widht; j++)
         {
-            printf("%c", (*instance)->pixels[i][j]);
+            if((*instance)->pixels[i][j] == '\0')
+            {
+                printf(" ");
+            } else
+            {
+                printf("%c", (*instance)->pixels[i][j]);
+            }
         }
 
         auxFunctionsPrintVerticalLine();
@@ -226,4 +232,70 @@ bool paintingFrameInsertManyCopies(paintingFrame ** destiny, paintingFrame ** or
 
     return 0;
     
+}
+
+bool paintingFrameInsertCopiesFrom1To100(paintingFrame ** destiny, paintingFrame ** origin, unsigned short int copiesNumber)
+{
+    if(copiesNumber<1) {
+        srand(time(NULL));
+        return paintingFrameInsertManyCopies(destiny, origin, (rand() % 100) + 1);
+    } else if(copiesNumber>100) {
+        return paintingFrameInsertManyCopies(destiny,origin, 100);
+    } else {
+        return paintingFrameInsertManyCopies(destiny, origin, copiesNumber);
+    }
+}
+
+bool paintingFrameRandomlyInsertThreePaints(paintingFrame ** destiny, paintingFrame ** paint0, paintingFrame ** paint1, paintingFrame ** paint2, unsigned short int copiesNumber)
+{
+    unsigned short int copiesForNextPaint;
+
+    srand(time(NULL));
+
+    copiesForNextPaint = rand() % (copiesNumber);
+    paintingFrameInsertCopiesFrom1To100(destiny,paint0, copiesForNextPaint);
+
+    copiesForNextPaint = rand() % (copiesNumber);
+    copiesNumber -= copiesForNextPaint;
+    paintingFrameInsertCopiesFrom1To100(destiny,paint1, copiesForNextPaint);
+
+    copiesForNextPaint = rand() % (copiesNumber);
+    copiesNumber -= copiesForNextPaint;
+    paintingFrameInsertCopiesFrom1To100(destiny,paint2, copiesForNextPaint);
+
+    return 0;
+}
+
+bool paintingFrameRandomlyInsertThreePaintsFrom1To100(paintingFrame ** destiny, paintingFrame ** paint0, paintingFrame ** paint1, paintingFrame ** paint2, unsigned short int copiesNumber)
+{
+    if(copiesNumber<1) {
+        srand(time(NULL));
+        return paintingFrameRandomlyInsertThreePaints(destiny, paint0, paint1, paint2, (rand() % 100) + 1);
+    } else if(copiesNumber>100) {
+        return paintingFrameRandomlyInsertThreePaints(destiny,paint0, paint1, paint2, 100);
+    } else {
+        return paintingFrameRandomlyInsertThreePaints(destiny, paint0, paint1, paint2, copiesNumber);
+    }
+}
+
+bool paintingFrameBonusAstro(paintingFrame ** destiny, unsigned short int surprise)
+{
+    paintingFrame * currentPaint = NULL;
+
+    surprise %= 15 + 1;
+    srand(time(NULL));
+
+    paintingFrameCreatePaintFromFile(&currentPaint, "astro/0.txt");
+    paintingFrameInsertManyCopies(destiny, &currentPaint, (rand() % surprise) % 2);
+    
+    paintingFrameCreatePaintFromFile(&currentPaint, "astro/1.txt");
+    paintingFrameInsertManyCopies(destiny, &currentPaint, (rand() % surprise) % 2);
+
+    paintingFrameCreatePaintFromFile(&currentPaint, "astro/2.txt");
+    paintingFrameInsertManyCopies(destiny, &currentPaint, (rand() % surprise) % 4);
+
+    paintingFrameCreatePaintFromFile(&currentPaint, "paints/asterisk.txt");
+    paintingFrameInsertManyCopies(destiny, &currentPaint, (rand() % surprise*20) + 10);
+
+    return 0;
 }

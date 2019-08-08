@@ -8,5 +8,8 @@
 
 bool auxFunctionsPrintHorizontalLine(unsigned short int widht);
 bool auxFunctionsPrintVerticalLine();
+bool auxFunctionsPrintMenu();
+bool auxFunctionsAskForType();
+bool auxFunctionsAskForCopies();
 
 #endif
