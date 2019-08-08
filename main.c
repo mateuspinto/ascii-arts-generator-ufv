@@ -57,7 +57,7 @@ int main() {
 
         } else if(option==4) {
 
-            printf("Digite um número para a surpresa: ")
+            printf("Digite um número para a surpresa: ");
             scanf("%hu", &copies);
             paintingFrameBonusAstro(&background, copies);
             paintingFramePrintPaint(&background);
