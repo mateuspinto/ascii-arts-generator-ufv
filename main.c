@@ -21,7 +21,7 @@ int main() {
     paintingFrameCreatePaintFromFile(&cross, "paints/cross.txt");
     paintingFrameCreatePaintFromFile(&x, "paints/x.txt");
 
-    paintingFrameCreateClearPaint(&background, 20, 80);
+    paintingFrameCreateClearPaint(&background, 18, 78);
     
     
     auxFunctionsPrintMenu();

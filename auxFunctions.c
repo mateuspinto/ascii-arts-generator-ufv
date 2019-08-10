@@ -26,16 +26,21 @@ bool auxFunctionsPrintVerticalLine(){
 
 bool auxFunctionsPrintMenu()
 {
-    auxFunctionsPrintHorizontalLine(80);
+    auxFunctionsPrintHorizontalLine(78);
     printf("Bem-vindo ao programa René Marombitte, criador de artes digitais aleatórias!\n");
-    auxFunctionsPrintHorizontalLine(80);
+    auxFunctionsPrintHorizontalLine(78);
+    printf("Feito por Mateus Pinto da Silva, matricula 3489\n");
+    printf("Disciplina de Projeto e Analise de Algoritmos, CCF 330F\n");
+    auxFunctionsPrintHorizontalLine(78);
 
     printf("Digite uma opção válida: \n");
     printf("1- Asterisco simples;\n");
     printf("2- Símbolo de soma com astericos;\n");
     printf("3- Letra X com asteriscos;\n");
     printf("4- Figura aleatórias (Surpresa)\n");
-    auxFunctionsPrintHorizontalLine(80);
+    printf("\n");
+    printf("9- Sair do programa\n");
+    auxFunctionsPrintHorizontalLine(78);
     printf("\n");
 
     return 0;
