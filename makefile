@@ -1,3 +1,7 @@
+#	Trabalho pratico 0 de Projeto e analise de algoritmos - CCF 330F
+#	Feito por Mateus Pinto da Silva, matricula 3489
+#	Universidade Federal de Viçosa
+
 # Nome do executavel
 TARGET=marombitte.o
 
