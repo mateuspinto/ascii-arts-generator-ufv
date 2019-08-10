@@ -39,7 +39,7 @@ bool auxFunctionsPrintMenu()
     printf("Disciplina de Projeto e Analise de Algoritmos, CCF 330F\n");
     auxFunctionsPrintHorizontalLine(78);
 
-    printf("Digite uma opção válida: \n");
+    printf("Opções disponíveis: \n");
     printf("1- Asterisco simples;\n");
     printf("2- Símbolo de soma com astericos;\n");
     printf("3- Letra X com asteriscos;\n");

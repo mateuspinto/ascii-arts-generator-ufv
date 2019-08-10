@@ -12,14 +12,11 @@ CCO=clang
 # Warnings
 WARN=-Wall
 
-CCFLAGS=$(WARN)
-
-
 # Main e .c dos TADS
 SRC= main.c auxFunctions.c adt/paintingFrame.c
 
 all:
-	$(CC) -o $(TARGET) $(SRC) $(CCFLAGS) -lm
+	$(CC) -o $(TARGET) $(SRC) $(WARN) -lm
 
 run:
 	./$(TARGET)
