@@ -43,8 +43,9 @@ bool auxFunctionsPrintMenu()
     printf("1- Asterisco simples;\n");
     printf("2- Símbolo de soma com astericos;\n");
     printf("3- Letra X com asteriscos;\n");
-    printf("4- Figura aleatórias (Surpresa)\n");
+    printf("4- Figura aleatórias (Surpresa);\n");
     printf("\n");
+    printf("8- Escolher novas dimensões do quadro;\n");
     printf("9- Sair do programa\n");
     auxFunctionsPrintHorizontalLine(78);
     printf("\n");

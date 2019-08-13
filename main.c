@@ -23,11 +23,14 @@ int main() {
     bool exit=false;
     unsigned short int option;
 
+    unsigned short int height = 18;
+    unsigned short int widht = 78;
+
     paintingFrameCreatePaintFromFile(&asterisk, "paints/asterisk.txt");
     paintingFrameCreatePaintFromFile(&cross, "paints/cross.txt");
     paintingFrameCreatePaintFromFile(&x, "paints/x.txt");
 
-    paintingFrameCreateClearPaint(&background, 18, 78);
+    paintingFrameCreateClearPaint(&background, height, widht);
     
     
     auxFunctionsPrintMenu();
@@ -63,18 +66,32 @@ int main() {
 
         } else if(option==4) {
 
-            printf("Digite um número para a surpresa: ");
+            printf("Digite um número para a surpresa [Por favor, teste várias vezes]: ");
             scanf("%hu", &copies);
             paintingFrameBonusAstro(&background, copies);
             paintingFramePrintPaint(&background);
-        } else if(option==9) {
+
+        } else if(option==8) {
+
+            printf("Digite uma nova altura e um novo comprimento entre um espaço: ");
+            scanf("%hu %hu", &height, &widht);
+
+            while(height<=2 || widht<=2) {
+                printf("\nErro. Digite valores maiores do que dois! ");
+                scanf("%hu %hu", &height, &widht);
+            }
+
+            height -= 2;
+            widht -= 2;
+
+        }else if(option==9) {
             
             printf("Obrigado! <3\n");
             exit=true;
             break;
         }
 
-        paintingFrameCreateClearPaint(&background, 20, 80);
+        paintingFrameCreateClearPaint(&background, height, widht);
         printf("Digite outra opção ou 0 para voltar ao menu: ");
         scanf("%hu", &option);
         printf("\n");
