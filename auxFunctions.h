@@ -7,15 +7,15 @@
 #ifndef AUXFUNCTIONS_H
 #define AUXFUNCTIONS_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <time.h>
 
 bool auxFunctionsPrintHorizontalLine(unsigned short int widht);
-bool auxFunctionsPrintVerticalLine();
-bool auxFunctionsPrintMenu();
-bool auxFunctionsAskForType();
-bool auxFunctionsAskForCopies();
+bool auxFunctionsPrintVerticalLine(void);
+bool auxFunctionsPrintMenu(void);
+bool auxFunctionsAskForType(void);
+bool auxFunctionsAskForCopies(void);
 
 #endif

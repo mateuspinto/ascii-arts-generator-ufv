@@ -4,61 +4,57 @@
     Universidade Federal de Viçosa
 */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <time.h>
 
 #include "auxFunctions.h"
 
-bool auxFunctionsPrintHorizontalLine(unsigned short int widht)
-{
+bool auxFunctionsPrintHorizontalLine(unsigned short int widht) {
 
-    for (size_t i = 0; i < widht + 2; i++)
-    {
-        printf("-");
-    }
-    
-    printf("\n");
-    return 0;
+  for (size_t i = 0; i < widht + 2; i++) {
+    printf("-");
+  }
+
+  printf("\n");
+  return 0;
 }
 
-bool auxFunctionsPrintVerticalLine(){
+bool auxFunctionsPrintVerticalLine(void) {
 
-    printf("|");
+  printf("|");
 
-    return 0;
+  return 0;
 }
 
-bool auxFunctionsPrintMenu()
-{
-    auxFunctionsPrintHorizontalLine(78);
-    printf("Bem-vindo ao programa René Marombitte, criador de artes digitais aleatórias!\n");
-    auxFunctionsPrintHorizontalLine(78);
-    printf("Feito por Mateus Pinto da Silva, matricula 3489\n");
-    printf("Disciplina de Projeto e Analise de Algoritmos, CCF 330F\n");
-    auxFunctionsPrintHorizontalLine(78);
+bool auxFunctionsPrintMenu(void) {
+  auxFunctionsPrintHorizontalLine(78);
+  printf("Bem-vindo ao programa René Marombitte, criador de artes digitais "
+         "aleatórias!\n");
+  auxFunctionsPrintHorizontalLine(78);
+  printf("Feito por Mateus Pinto da Silva, matricula 3489\n");
+  printf("Disciplina de Projeto e Analise de Algoritmos, CCF 330F\n");
+  auxFunctionsPrintHorizontalLine(78);
 
-    printf("Opções disponíveis: \n");
-    printf("1- Asterisco simples;\n");
-    printf("2- Símbolo de soma com astericos;\n");
-    printf("3- Letra X com asteriscos;\n");
-    printf("4- Figura aleatórias (Surpresa);\n");
-    printf("\n");
-    printf("8- Escolher novas dimensões do quadro;\n");
-    printf("9- Sair do programa\n");
-    auxFunctionsPrintHorizontalLine(78);
-    printf("\n");
+  printf("Opções disponíveis: \n");
+  printf("1- Asterisco simples;\n");
+  printf("2- Símbolo de soma com astericos;\n");
+  printf("3- Letra X com asteriscos;\n");
+  printf("4- Figura aleatórias (Surpresa);\n");
+  printf("\n");
+  printf("8- Escolher novas dimensões do quadro;\n");
+  printf("9- Sair do programa\n");
+  auxFunctionsPrintHorizontalLine(78);
+  printf("\n");
 
-    return 0;
+  return 0;
 }
 
-bool auxFunctionsAskForType()
-{
-    return printf("Digite uma opção válida: ");
+bool auxFunctionsAskForType(void) {
+  return printf("Digite uma opção válida: ");
 }
 
-bool auxFunctionsAskForCopies()
-{
-    return printf("Digite a quantidade de entradas: ");
+bool auxFunctionsAskForCopies(void) {
+  return printf("Digite a quantidade de entradas: ");
 }
