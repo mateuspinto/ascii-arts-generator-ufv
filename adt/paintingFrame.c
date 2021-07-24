@@ -32,7 +32,7 @@ bool paintingFrameDestroyPaint(paintingFrame **instance) {
 }
 
 bool paintingFrameStartPaint(paintingFrame **instance) {
-  *instance = malloc(sizeof(paintingFrame));
+  *instance = (paintingFrame *)malloc(sizeof(paintingFrame));
 
   if (*instance == NULL) {
     printf("ERRO DE MEMORIA\n");
@@ -50,10 +50,10 @@ bool paintingFrameClearPaint(paintingFrame **instance,
   (**instance).widht = widht;
 
   // Aloca dinamicamente o quadro de pintura
-  (**instance).pixels = malloc((**instance).height * sizeof(char *));
+  (**instance).pixels = (char **)malloc((**instance).height * sizeof(char *));
 
   for (size_t i = 0; i < (**instance).height; i++) {
-    (**instance).pixels[i] = malloc((**instance).widht * sizeof(char));
+    (**instance).pixels[i] = (char *)malloc((**instance).widht * sizeof(char));
 
     // Limpando quadro de pintura
     for (size_t j = 0; j < (**instance).widht; j++) {

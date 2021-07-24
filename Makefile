@@ -2,17 +2,17 @@
 #	Feito por Mateus Pinto da Silva, matricula 3489
 #	Universidade Federal de Viçosa
 
-# Nome do executavel
 BIN=marombitte
-
-# Compiladores
-CC=clang
-
-# Main e .c dos TADS
+LIBS=
 SRC= main.c auxFunctions.c adt/paintingFrame.c
 
+CC=clang
+CFLAGS=-O3 -march=native
+LFLAGS=-static
+WARN=-Wall -Wextra -Werror
+
 all:
-	$(CC) -o $(BIN) $(SRC) -pipe -O3 -march=native -lm -flto -Wall -Wextra
+	$(CC) -o $(BIN) $(SRC) $(CFLAGS) $(LFLAGS) $(WARN) $(LIBS)
 
 run:
 	./$(BIN)
